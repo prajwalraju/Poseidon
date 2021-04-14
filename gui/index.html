@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Poseidon</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome CSS-->
+  <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+  <!-- Custom Font Icons CSS-->
+  <link rel="stylesheet" href="css/font.css">
+  <!-- Google fonts - Muli-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700">
+  <!-- theme stylesheet-->
+  <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+  <!-- Custom stylesheet - for your changes-->
+  <link rel="stylesheet" href="css/custom.css">
+  <!-- Favicon-->
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <script type='text/javascript' src='/eel.js'></script>
+
+
+
+</head>
+
+<body>
+  <div class="d-flex align-items-stretch">
+    <!-- Sidebar Navigation-->
+    <nav id="sidebar">
+      <!-- Sidebar Header-->
+      <div class="sidebar-header d-flex align-items-center">
+        <div class="title">
+          <h1 class="h5">Poseidon</h1>
+          <p>Water impurity tester</p>
+        </div>
+      </div>
+      <!-- Sidebar Navidation Menus-->
+      <ul class="list-unstyled">
+        <li class="active"><a href="index.html"> <i class="icon-home"></i>Predict </a></li>
+        <li><a href="collect.html"> <i class="icon-grid"></i>Collect </a></li>
+        <!-- <li><a href="tables.html"> <i class="icon-grid"></i>Tables </a></li>
+          <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts </a></li> -->
+      </ul>
+    </nav>
+    <!-- Sidebar Navigation end-->
+    <div class="page-content">
+      <div class="page-header">
+        <div class="container-fluid">
+          <h2 class="h5 no-margin-bottom">Predict your model</h2>
+        </div>
+      </div>
+
+
+
+      <section class="no-padding-top">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <button type="button" class="btn btn-primary btn-lg btn-block" onclick="openCamera(); return false;">Open
+                Camera</button>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <button type="button" class="btn btn-secondary btn-lg btn-block"
+                onclick="analyse(); return false">Analyse</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="no-padding-bottom" style="padding-top: 2%;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="statistic-block block">
+                <img src="img/openCamera/CurrFrontImage.png" style="background-size: contains;
+                width: 450px;
+                height: 300px;">
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="statistic-block block">
+                <img src="img/openCamera/currTopImage.png" style="background-size: contains;
+                width: 450px;
+                height: 300px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="no-padding-bottom" style="padding-top: 2%;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="statistic-block block">
+                <div class="progress-details d-flex align-items-end justify-content-between">
+                  <div class="title">
+                    <strong>Number of particles</strong>
+                  </div>
+                  <div class="number dashtext-3" id="htmlNumber"></div>
+                </div>
+                <div class="progress progress-template">
+                  <div role="progressbar" class="progressNumber" aria-valuenow="500" aria-valuemin="0"
+                    aria-valuemax="100" class="progress-bar progress-bar-template dashbg-3"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="statistic-block block">
+                <div class="progress-details d-flex align-items-end justify-content-between">
+                  <div class="title">
+                    <strong>Dimention of particles</strong>
+                  </div>
+                  <div class="number dashtext-4" id="htmlSize"></div>
+                </div>
+                <div class="progress progress-template">
+                  <div role="progressbar" class="progressSize" style="width: 35%" aria-valuenow="35" aria-valuemin="0"
+                    aria-valuemax="100" class="progress-bar progress-bar-template dashbg-4"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="no-padding-bottom">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="line-chart block chart">
+                <div class="title"><strong>History of number of particles</strong></div>
+                <canvas id="lineChartCustom2"></canvas>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="line-chart block chart">
+                <div class="title"><strong>History of Dimention of particles</strong></div>
+                <canvas id="lineChartCustom1"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+    </div>
+  </div>
+  <!-- JavaScript files-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/popper.js/umd/popper.min.js"> </script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+  <script src="js/charts-home.js"></script>
+  <script src="js/charts-custom.js"></script>
+  <script src="js/front.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script type='text/javascript'>
+
+    if (sessionStorage.getItem('Size') == null) {
+      sessionStorage.setItem("Size", "[]");
+    }
+
+    if (sessionStorage.getItem('Number') == null) {
+      sessionStorage.setItem("Number", "[]");
+    }
+
+    document.getElementById('htmlNumber').innerHTML = sessionStorage.getItem("numberOfParticles")
+    document.getElementById('htmlSize').innerHTML = sessionStorage.getItem("sizeOfParticles")
+
+
+
+    async function openCamera() {
+      let random_filename = await eel.openCamera()();
+      location.reload();
+    }
+
+    async function analyse() {
+      let resultAnalyse = await eel.analyse()();
+
+      let numberOfParticles = document.getElementById('htmlNumber');
+      let sizeOfParticles = document.getElementById('htmlSize');
+
+      // let progressNumber = document.querySelector(".progressNumber")
+      // let progressSize = document.querySelector(".progressSize")
+
+      numberOfParticles.innerHTML = resultAnalyse[0]
+      sizeOfParticles.innerHTML = resultAnalyse[1]
+
+      sessionStorage.setItem("numberOfParticles", resultAnalyse[0])
+      sessionStorage.setItem("sizeOfParticles", resultAnalyse[1])
+
+      // size log 
+      let oldSize = JSON.parse(sessionStorage.getItem("Size"))
+      console.log(oldSize[-1])
+      oldSize.push(resultAnalyse[0])
+      if (oldSize.length > 7) {
+        oldSize.shift();
+      }
+      sessionStorage.setItem("Size", JSON.stringify(oldSize))
+      console.log(sessionStorage.getItem("Size"))
+
+      // number log 
+      let oldNumber = JSON.parse(sessionStorage.getItem("Number"))
+      console.log(oldNumber[-1])
+      oldNumber.push(resultAnalyse[1])
+      if (oldNumber.length > 7) {
+        oldNumber.shift();
+      }
+      sessionStorage.setItem("Number", JSON.stringify(oldNumber))
+      console.log(sessionStorage.getItem("Number"))
+
+      location.reload();
+    }
+
+  </script>
+
+</body>
+
+</html>
